@@ -3,8 +3,6 @@ import { useState } from "react";
 import Item from "./Item";
 
 const PackingLists = ({ packingsItems, onDeleteItems, onToggleItems }) => {
-  // console.log("PackingLists");
-
   const [sortBy, setSortBy] = useState("input");
   let sortedItems = [];
 
@@ -15,8 +13,10 @@ const PackingLists = ({ packingsItems, onDeleteItems, onToggleItems }) => {
       .slice()
       .sort((a, b) => a.description.localeCompare(b.description));
 
-
-      if(sortBy === "packed") sortedItems = packingsItems.slice().sort((a,b) => Number(a.packed) - Number(b.packed))
+  if (sortBy === "packed")
+    sortedItems = packingsItems
+      .slice()
+      .sort((a, b) => Number(a.packed) - Number(b.packed));
   return (
     <div className="list">
       <ul>
